@@ -1,0 +1,15 @@
+///* 改变主题色变量 */
+//$--color-primary: #4b9df3;
+@import "variables";
+
+/* 改变 icon 字体路径变量，必需 */
+
+$--font-path: "~element-ui/lib/theme-chalk/fonts";
+@import "~element-ui/packages/theme-chalk/src/index";
+// element 分页字体修改
+.el-pager li {
+    font-weight: normal;
+}
+.paginationSelect .el-input{
+    width: 70px !important;
+}

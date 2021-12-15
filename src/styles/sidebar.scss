@@ -1,0 +1,37 @@
+.sidebar-container{
+
+      .el-menu-item.is-active {
+        background-color: #4b9df3 !important;
+      }
+
+      .el-menu-item:hover{
+        background-color: #4b9df3 !important;
+
+        &>span{
+            color:#fff
+        }
+        &>i{
+            color:#fff
+        }
+      }
+
+      .el-menu{
+        border:none!important;
+      }
+
+
+      .el-menu-item{
+        &>i{
+          margin-right: 8px;
+        }
+      }
+      .el-submenu__title{
+        &>i{
+          margin-right: 8px;
+        }
+      }
+      .el-submenu__title:hover{
+        background-color: transparent!important;
+        
+      }
+}

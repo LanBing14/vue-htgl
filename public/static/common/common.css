@@ -1,0 +1,22 @@
+.title-name {
+    margin-bottom: 20px;
+  }
+  .title-name .name-1 {
+    height: 42px;
+    display: inline-block;
+    line-height: 42px;
+    font-size: 16px;
+    border-bottom: 2px solid #20a0ff;
+  }
+.colord9544e{
+    color: #d9544e;
+}
+.color8fc585{
+    color: #8fc585;
+}
+.color5e9dec{
+    color: #5e9dec;
+}
+.mt20{
+  margin-top: 20px;
+}

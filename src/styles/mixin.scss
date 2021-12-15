@@ -1,0 +1,454 @@
+/*
+ * 定义多次用到 或 参数容易改变的样式
+ */
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin scrollBar {
+    &::-webkit-scrollbar-track-piece {
+        background: #d3dce6;
+    }
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #99a9bf;
+        border-radius: 20px;
+    }
+}
+
+@mixin relative {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+@mixin pct($pct) {
+    width: #{$pct};
+    position: relative;
+    margin: 0 auto;
+}
+
+@mixin triangle($width, $height, $color, $direction) {
+    $width: $width/2;
+    $color-border-style: $height solid $color;
+    $transparent-border-style: $width solid transparent;
+    height: 0;
+    width: 0;
+    @if $direction==up {
+        border-bottom: $color-border-style;
+        border-left: $transparent-border-style;
+        border-right: $transparent-border-style;
+    }
+    @else if $direction==right {
+        border-left: $color-border-style;
+        border-top: $transparent-border-style;
+        border-bottom: $transparent-border-style;
+    }
+    @else if $direction==down {
+        border-top: $color-border-style;
+        border-left: $transparent-border-style;
+        border-right: $transparent-border-style;
+    }
+    @else if $direction==left {
+        border-right: $color-border-style;
+        border-top: $transparent-border-style;
+        border-bottom: $transparent-border-style;
+    }
+}
+
+
+/*
+ * 多行文本溢出
+ */
+
+@mixin ellipsisM($lineNum: 2) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $lineNum;
+    -webkit-box-orient: vertical;
+}
+
+@mixin elCustom() {
+    /*表格*/
+    .el-table {
+        color: #606266;
+        th {
+            padding: 13px 0;
+        }
+        td {
+            padding: 11px 0;
+            font-size: 13px;
+        }
+        .el-table__footer-wrapper,
+        .el-table__header-wrapper,
+        .el-table__fixed-header-wrapper {
+            th,
+            tr {
+                color: #7088a4;
+                background: #eaedf4;
+            }
+        }
+    }
+    .el-input__inner {
+        line-height: 30px;
+        height: 30px;
+    }
+    .el-range-editor.el-input__inner {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .el-input__icon {
+        line-height: 30px;
+    }
+    .el-button:not(.el-button--text) {
+        padding-top: 7px;
+        padding-bottom: 7px;
+    }
+    .page-header {
+        .el-button {
+            border-radius: 4px;
+            padding-right: 15px;
+            padding-left: 15px;
+            height: 30px;
+            // padding: 7px 20px;
+            min-width: auto;
+            font-size: 13px;
+            position: relative;
+            top: 2px;
+        }
+    }
+    .page-content {
+        .el-form {
+            .el-button {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+    }
+    /*表单*/
+    .el-form {
+        margin-bottom: 14px;
+        .el-form-item {
+            margin-right: 6px;
+        }
+        .el-form-item__content {
+            line-height: 30px;
+        }
+        .el-form-item__label {
+            color: #606266;
+            font-weight: 500;
+            line-height: 30px;
+        }
+    }
+    /*菜单*/
+    .el-submenu__title i {
+        color: #b7c5d6;
+    }
+    .iconfont,
+    .svg-icon {
+        margin-right: 8px;
+    }
+    /*alert提示*/
+    .el-alert {
+        margin-bottom: 15px;
+        min-height: 40px;
+        border-radius: 0;
+        .el-alert__content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            .el-alert__title {
+                flex: 1;
+                font-size: 13px;
+                font-weight: 500;
+            }
+            .el-alert__description {
+                margin-top: 0;
+            }
+        }
+    }
+    .el-form-item__content .el-input-group {
+        vertical-align: baseline;
+    }
+    .page-content {
+        height: calc(100% - 62px);
+        padding-bottom: 20px;
+    }
+    .el-tree-node__content {
+        height: 32px;
+        line-height: 32px;
+    }
+    .el-tabs__header {
+        margin-bottom: 10px;
+        // border-bottom: 1px solid #e0e3ec;
+    }
+    .el-tabs__active-bar {
+        background-color: #4b9df3;
+    }
+    .el-pagination.is-background .el-pager li:not(.disabled).active {
+        background-color: #4b9df3;
+    }
+    .el-table td,
+    .el-table th.is-leaf {
+        border-bottom: 0;
+    }
+    .el-table--striped .el-table__body tr.el-table__row--striped td {
+        background: #f7f8fc;
+    }
+    .el-date-editor .el-range-separator {
+        line-height: 28px;
+        padding: 0;
+    }
+    .el-range-editor.el-input__inner {
+        line-height: 28px;
+    }
+    .el-popover {
+        min-width: 185px;
+    }
+}
+
+@mixin radioGroupButton() {
+    .el-radio-group {
+        display: block;
+        .el-radio-button {
+            display: block;
+            &:first-child .el-radio-button__inner {
+                border: none;
+                border-radius: 0;
+            }
+            &:last-child .el-radio-button__inner {
+                border: none;
+                border-radius: 0;
+            }
+            .el-radio-button__inner {
+                border: none;
+                display: block;
+                text-align: left;
+                color: #606266;
+            }
+        }
+        .el-radio-button__orig-radio:checked+.el-radio-button__inner {
+            box-shadow: none;
+            background-color: #4b9df3;
+            color: #fff;
+        }
+    }
+}
+
+//客户档案情况
+@mixin area() {
+    .area {
+        background-color: rgba(51, 153, 230, 0.2);
+        margin: 0 0 22px -28px;
+        padding: 10px 0px 10px 36px;
+        &>.el-col {
+            position: relative;
+        }
+        .el-form-item {
+            margin-bottom: 0;
+            /deep/ .el-form-item__label {
+                font-size: 12px;
+                padding-right: 0;
+            }
+        }
+        .area-btn {
+            position: absolute;
+            left: 50%;
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: left;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+.sub-title {
+    // border: 1px solid rgb(221, 221, 221);
+    // color: rgb(96, 98, 102);
+    padding: 0 16px;
+    font-weight: bold;
+    height: 46px;
+    line-height: 46px;
+    background-color: #f5f7fa;
+    margin-top: 20px;
+    position: relative;
+    >div {
+        position: absolute;
+        right: 16px;
+        top: 0;
+        width: 80%;
+        text-align: right;
+        button {
+            margin-left: 6px;
+        }
+    }
+    >button {
+        position: absolute;
+        right: 16px;
+        top: 8px;
+    }
+}
+
+.tabs-sub-title {
+    .el-tabs__header {
+        padding: 0 16px;
+        font-weight: bold;
+        height: 46px;
+        line-height: 46px;
+        background-color: #f5f7fa;
+        margin-top: 20px;
+        margin-bottom: 0;
+        position: relative;
+        .el-tabs__nav-wrap {
+            &::after {
+                content: none;
+            }
+        }
+    }
+    .el-tabs__active-bar {
+        display: none;
+    }
+}
+
+.canClick {
+    cursor: pointer;
+    color: #4b9df3;
+}
+
+/deep/ .detail-divider {
+    margin: 0 0 4px 0;
+    background-color: #eaedf4;
+}
+
+.table-no-hidden {
+    overflow: initial;
+    .el-table__body-wrapper {
+        overflow: initial;
+    }
+    .cell {
+        overflow: initial;
+    }
+}
+
+.unread-tag {
+    height: 4px;
+    width: 4px;
+    background-color: #f56c6c;
+    border-radius: 50rem;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.el-tabs {
+    box-shadow: none;
+}
+
+.choose-dialog-container {
+    border: 1px solid #eaedf4;
+    margin-bottom: 10px;
+    background-color: #f5f7fa;
+}
+
+.choose-dialog-text {
+    .el-form-item__label {
+        line-height: 26px !important;
+    }
+    .el-form-item__content {
+        line-height: 26px !important;
+    }
+}
+
+.el-dialog__body {
+    padding: 30px 20px 10px;
+}
+
+body {
+    .xiu-form {
+        margin-bottom: 0 !important;
+    }
+}
+
+#changeBtnSize {
+    .el-button--small {
+        padding: 7px 15px;
+        font-size: 13px;
+        vertical-align: middle;
+    }
+    .el-input--small .el-input__inner {
+        height: 30px;
+        line-height: 30px;
+    }
+}
+
+.size-btn-change {
+    .el-button {
+        height: 36px;
+        padding-top: 9px!important;
+        padding-bottom: 9px!important;
+        min-width: 84px;
+        font-size: 14px;
+    }
+    .el-button+.el-button {
+        margin-left: 8px;
+    }
+}
+
+#upload-btn-size {
+    .el-button {
+        padding: 7px 15px!important;
+        font-size: 13px;
+        height: 30px;
+        min-width: initial;
+    }
+}
+
+.el-dialog__footer {
+    .el-button {
+        height: 36px;
+        padding-top: 9px!important;
+        padding-bottom: 9px!important;
+        min-width: 84px;
+        font-size: 14px;
+    }
+    .el-button+.el-button {
+        margin-left: 8px;
+    }
+}
+
+.change-input-size {
+    .el-input__inner {
+        height: 30px;
+        line-height: 30px;
+    }
+}
+
+.el-image-viewer__close {
+    .el-icon-circle-close {
+        color: #fff
+    }
+}
+@mixin flexContainer($style){
+    display: flex;
+    align-items: center;
+    @if $style==between{
+        justify-content: space-between;
+    } 
+    @else if $style==around{
+        justify-content: space-around;
+    }
+    @else if $style==start{
+        justify-content: flex-start;
+    }
+    @else {
+        justify-content: flex-end;
+    }
+}
